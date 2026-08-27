@@ -569,30 +569,95 @@ h1 {
   transform: translateX(3px);
 }
 
+/* ==========================================================================
+   Bottom Navigation Dock
+   ========================================================================== */
+.book-bottom-nav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  margin: 8px auto 0;
+  max-width: 620px;
+  z-index: 20;
+}
+
+.bottom-nav-arrow-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  background: rgba(36, 30, 25, 0.85);
+  border: 1px solid rgba(201, 168, 106, 0.35);
+  color: var(--book-gold);
+  font-family: var(--font-sans);
+  font-size: 9.5px;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  padding: 6px 12px;
+  border-radius: 16px;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  transition: all 0.2s ease;
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+}
+
+.bottom-nav-arrow-btn:hover:not(:disabled) {
+  background: rgba(48, 40, 32, 0.95);
+  border-color: #f7e8b0;
+  color: #fff9e6;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(201, 168, 106, 0.25);
+}
+
+.bottom-nav-arrow-btn:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+  border-color: rgba(201, 168, 106, 0.15);
+}
+
+.bottom-nav-arrow {
+  font-size: 13px;
+  line-height: 1;
+}
+
+.bottom-nav-text {
+  font-size: 9.5px;
+}
+
 /* Dots Nav */
 .dots {
-  position: absolute;
-  bottom: 18px;
-  left: 50%;
-  transform: translateX(-50%);
   display: flex;
+  align-items: center;
   gap: 8px;
-  z-index: 10;
+  padding: 6px 12px;
+  background: rgba(26, 22, 18, 0.65);
+  border: 1px solid rgba(201, 168, 106, 0.2);
+  border-radius: 16px;
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
 }
 
 .dots button {
-  width: 8px;
-  height: 8px;
+  width: 7px;
+  height: 7px;
   padding: 0;
-  border: 1.5px solid var(--ink);
+  border: 1px solid rgba(201, 168, 106, 0.5);
   border-radius: 50%;
   background: transparent;
   transition: all 0.2s ease;
 }
 
+.dots button:hover {
+  border-color: #ffffff;
+  background: rgba(201, 168, 106, 0.4);
+}
+
 .dots .active {
-  background: var(--ink);
-  transform: scale(1.25);
+  background: var(--book-gold);
+  border-color: #fff9e6;
+  transform: scale(1.35);
+  box-shadow: 0 0 8px rgba(201, 168, 106, 0.8);
 }
 
 /* Right Visual Panel */
@@ -797,51 +862,109 @@ h1 {
   height: 100%;
 }
 
-/* Universal Navigation Controls (Wedge / Right Margin) */
-.wedge-split-controls {
+/* ==========================================================================
+   External Right-Side Navigation Dock (Outside the Book)
+   ========================================================================== */
+.book-outer-right-nav {
   position: absolute;
-  right: 14px;
+  right: -52px;
   top: 50%;
-  transform: translateY(-50%) !important;
+  transform: translateY(-50%);
   display: flex;
   flex-direction: column;
-  gap: 10px;
-  z-index: 30;
+  align-items: center;
+  gap: 6px;
+  z-index: 40;
   pointer-events: auto;
 }
 
-.wedge-split-controls button {
-  width: 36px;
-  height: 36px;
-  border: 1.5px solid rgba(201, 168, 106, 0.4);
+.outer-nav-btn {
+  position: relative;
+  width: 38px;
+  height: 38px;
   border-radius: 50%;
-  background: linear-gradient(135deg, #241d17 0%, #120e0a 100%);
+  background: linear-gradient(135deg, #2a221b 0%, #15110d 100%);
+  border: 1.5px solid rgba(201, 168, 106, 0.45);
   color: var(--book-gold);
-  font-size: 13px;
-  font-weight: 800;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.35);
-  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
+  box-shadow: 
+    0 8px 20px rgba(0, 0, 0, 0.55),
+    0 2px 4px rgba(201, 168, 106, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.wedge-split-controls button:hover {
-  background: linear-gradient(135deg, #32281f 0%, #19130d 100%);
-  border-color: var(--book-gold);
-  color: #fff4cc;
-  transform: scale(1.12);
-  box-shadow: 0 6px 18px rgba(201, 168, 106, 0.35);
+.outer-nav-btn:hover:not(:disabled) {
+  background: linear-gradient(135deg, #3d3126 0%, #1e1712 100%);
+  border-color: #f7e8b0;
+  color: #ffffff;
+  transform: scale(1.14);
+  box-shadow: 
+    0 10px 24px rgba(201, 168, 106, 0.4),
+    0 4px 8px rgba(0, 0, 0, 0.7);
 }
 
-.wedge-split-controls button:active {
-  transform: scale(0.95);
+.outer-nav-btn:active:not(:disabled) {
+  transform: scale(0.96);
 }
 
-.ctrl-up,
-.ctrl-down {
-  margin: 0 !important;
+.outer-nav-btn.is-disabled,
+.outer-nav-btn:disabled {
+  opacity: 0.25;
+  cursor: not-allowed;
+  border-color: rgba(201, 168, 106, 0.15);
+  pointer-events: none;
+}
+
+.outer-nav-icon {
+  font-size: 11px;
+  line-height: 1;
+}
+
+.outer-nav-counter {
+  font-family: var(--font-sans);
+  font-size: 9.5px;
+  font-weight: 800;
+  color: var(--book-gold);
+  letter-spacing: 0.1em;
+  padding: 2px 4px;
+  user-select: none;
+  opacity: 0.85;
+}
+
+.outer-nav-tooltip {
+  position: absolute;
+  right: 100%;
+  margin-right: 8px;
+  white-space: nowrap;
+  font-family: var(--font-sans);
+  font-size: 9.5px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  background: #181410;
+  color: #f7f3ea;
+  border: 1px solid rgba(201, 168, 106, 0.35);
+  padding: 4px 8px;
+  border-radius: 4px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+  transform: translateX(4px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+}
+
+.outer-nav-btn:hover .outer-nav-tooltip {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+@media (max-width: 1220px) {
+  .book-outer-right-nav {
+    right: -8px;
+  }
 }
 
 /* Article Placeholder Layout */

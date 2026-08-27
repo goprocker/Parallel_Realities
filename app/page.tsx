@@ -911,6 +911,33 @@ export default function Home() {
             </div>
           )}
 
+          {/* External Right-Side Navigation Dock (Outside the book) */}
+          <aside className="book-outer-right-nav" aria-label="Book page controls">
+            <button
+              className={`outer-nav-btn nav-up ${index === 0 ? 'is-disabled' : ''}`}
+              onClick={() => go(index - 1)}
+              disabled={index === 0}
+              aria-label="Previous Page"
+              title="Previous Page (▲)"
+            >
+              <span className="outer-nav-icon">▲</span>
+              <span className="outer-nav-tooltip">Prev Page</span>
+            </button>
+
+            <span className="outer-nav-counter">{String(index + 1).padStart(2, '0')}</span>
+
+            <button
+              className={`outer-nav-btn nav-down ${index >= pages.length - 1 ? 'is-disabled' : ''}`}
+              onClick={() => go(index + 1)}
+              disabled={index >= pages.length - 1}
+              aria-label="Next Page"
+              title="Next Page (▼)"
+            >
+              <span className="outer-nav-icon">▼</span>
+              <span className="outer-nav-tooltip">Next Page</span>
+            </button>
+          </aside>
+
           <section className={`plain-page ${direction} ${kind} ${isImageLeft ? 'image-left-layout' : ''}`} key={index}>
             {/* Physical 3D Paper Leaf overlay flipping over the book surface */}
             <div className="paper-turn-leaf" aria-hidden="true">
@@ -945,15 +972,6 @@ export default function Home() {
                       alt="SMI Newspaper: The Upper K"
                       className="broadsheet-book-page-img"
                     />
-                  </div>
-                  {/* Right Controls */}
-                  <div className="controls wedge-split-controls">
-                    <button className="ctrl-up" onClick={() => go(index - 1)} aria-label="Previous page" title="Previous page (▲)">
-                      ▲
-                    </button>
-                    <button className="ctrl-down" onClick={() => go(index + 1)} aria-label="Next page" title="Next page (▼)">
-                      ▼
-                    </button>
                   </div>
                 </div>
               </>
@@ -1021,16 +1039,6 @@ export default function Home() {
                   <div className="page-bottom-folio">
                     <span>— 20 —</span>
                   </div>
-
-                  {/* Right Controls */}
-                  <div className="controls wedge-split-controls">
-                    <button className="ctrl-up" onClick={() => go(index - 1)} aria-label="Previous page" title="Previous page (▲)">
-                      ▲
-                    </button>
-                    <button className="ctrl-down" onClick={() => go(0)} aria-label="Restart journey" title="Restart journey (↺)">
-                      ↺
-                    </button>
-                  </div>
                 </div>
               </>
             ) : isImageLeft ? (
@@ -1046,7 +1054,7 @@ export default function Home() {
                   </div>
                 </div>
 
-                {/* RIGHT PANEL: Copy & Text & Controls */}
+                {/* RIGHT PANEL: Copy & Text */}
                 <div className="copy copy-right book-page-right">
                   <div className="page-header-running-head">
                     <span>THE K-SHAPED DIVIDE</span>
@@ -1055,16 +1063,6 @@ export default function Home() {
                   <div className="page-bottom-folio">
                     <span>— {String(index * 2 + 2).padStart(2, '0')} —</span>
                   </div>
-                </div>
-
-                {/* Right Controls */}
-                <div className="controls wedge-split-controls">
-                  <button className="ctrl-up" onClick={() => go(index - 1)} aria-label="Previous page" title="Previous page (▲)">
-                    ▲
-                  </button>
-                  <button className="ctrl-down" onClick={() => go(index + 1)} aria-label="Next page" title="Next page (▼)">
-                    ▼
-                  </button>
                 </div>
               </>
             ) : (
@@ -1080,23 +1078,13 @@ export default function Home() {
                   </div>
                 </div>
 
-                {/* RIGHT PANEL: Visual & Controls */}
+                {/* RIGHT PANEL: Visual */}
                 <div className="visual book-page-right">
                   <div className="page-header-running-head">
                     <span>{kind === 'home' ? 'THE IDEA' : 'THE K-SHAPED DIVIDE'}</span>
                   </div>
                   {isCurve ? (
-                    <>
-                      <Curve lower={kind === 'lower'} onNavigate={go} />
-                      <div className="controls wedge-split-controls">
-                        <button className="ctrl-up" onClick={() => go(index - 1)} aria-label="Previous page" title="Previous page (▲)">
-                          ▲
-                        </button>
-                        <button className="ctrl-down" onClick={() => go(index + 1)} aria-label="Next page" title="Next page (▼)">
-                          ▼
-                        </button>
-                      </div>
-                    </>
+                    <Curve lower={kind === 'lower'} onNavigate={go} />
                   ) : (
                     <>
                       {kind === 'article' ? (
@@ -1114,16 +1102,6 @@ export default function Home() {
                           </svg>
                         </div>
                       )}
-
-                      {/* Controls */}
-                      <div className="controls wedge-split-controls">
-                        <button className="ctrl-up" onClick={() => go(index - 1)} aria-label="Previous page" title="Previous page (▲)">
-                          ▲
-                        </button>
-                        <button className="ctrl-down" onClick={() => go(index + 1)} aria-label="Next page" title="Next page (▼)">
-                          ▼
-                        </button>
-                      </div>
                     </>
                   )}
                   <div className="page-bottom-folio">
@@ -1138,6 +1116,17 @@ export default function Home() {
       </div>
 
       <div className="book-bottom-nav">
+        <button
+          className="bottom-nav-arrow-btn"
+          onClick={() => go(index - 1)}
+          disabled={index === 0}
+          aria-label="Previous Spread"
+          title="Previous Spread"
+        >
+          <span className="bottom-nav-arrow">‹</span>
+          <span className="bottom-nav-text">PREV</span>
+        </button>
+
         <nav className="dots" aria-label="Book page navigation">
           {pages.map((p, i) => (
             <button
@@ -1148,10 +1137,21 @@ export default function Home() {
                 setIndex(i);
               }}
               className={i === index ? 'active' : ''}
-              title={`Page ${i + 1}: ${p.title}`}
+              title={`Spread ${i + 1}: ${p.title}`}
             />
           ))}
         </nav>
+
+        <button
+          className="bottom-nav-arrow-btn"
+          onClick={() => go(index + 1)}
+          disabled={index >= pages.length - 1}
+          aria-label="Next Spread"
+          title="Next Spread"
+        >
+          <span className="bottom-nav-text">NEXT</span>
+          <span className="bottom-nav-arrow">›</span>
+        </button>
       </div>
     </main>
   );
