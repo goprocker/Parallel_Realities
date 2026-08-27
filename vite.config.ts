@@ -24,7 +24,7 @@ try {
     );
   }
   hostingConfig = JSON.parse(fs.readFileSync(hostingJsonPath, 'utf-8'));
-} catch (e) {
+} catch {
   // Fallback on read/parse error
 }
 
