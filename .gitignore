@@ -1,0 +1,33 @@
+# dependencies
+/node_modules
+/.pnp
+.pnp.js
+
+# testing
+/coverage
+
+# build outputs
+/.next/
+/out/
+/.vinext/
+/.wrangler/
+/build
+tsconfig.tsbuildinfo
+
+# backups & temp caches
+/.ag-kit-backups/
+/.openai/
+/.gemini/
+
+# misc
+.DS_Store
+*.pem
+
+# debug logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# local env files
+.env*.local
+.env
