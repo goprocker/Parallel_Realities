@@ -1,13 +1,13 @@
 {
-  "name": "sites-project",
+  "name": "pranith",
   "version": "0.1.0",
   "private": true,
   "engines": {
-    "node": "22.x"
+    "node": ">=20.0.0"
   },
   "scripts": {
-    "dev": "vinext dev",
-    "build": "next build && node -e \"require('fs').cpSync('.next', 'dist', {recursive: true})\"",
+    "dev": "next dev",
+    "build": "next build",
     "start": "next start",
     "lint": "eslint . --ignore-pattern dist --ignore-pattern .next"
   },
