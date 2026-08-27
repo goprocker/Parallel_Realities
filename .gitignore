@@ -11,14 +11,15 @@
 /out/
 /.vinext/
 /.wrangler/
+/dist/
 /build
 tsconfig.tsbuildinfo
 
+
 # backups & temp caches
 /.ag-kit-backups/
-/.openai/
-!.openai/hosting.json
 /.gemini/
+
 
 
 # misc

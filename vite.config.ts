@@ -9,16 +9,27 @@ const SITE_CREATOR_PLACEHOLDER_DATABASE_ID =
   '00000000-0000-4000-8000-000000000000';
 
 let hostingConfig: { d1?: string | null; r2?: string | null } = { d1: null, r2: null };
-const hostingJsonPath = path.resolve(process.cwd(), '.openai/hosting.json');
-if (fs.existsSync(hostingJsonPath)) {
-  try {
-    hostingConfig = JSON.parse(fs.readFileSync(hostingJsonPath, 'utf-8'));
-  } catch (e) {
-    // Fallback on read/parse error
+const hostingJsonDir = path.resolve(process.cwd(), '.openai');
+const hostingJsonPath = path.resolve(hostingJsonDir, 'hosting.json');
+
+try {
+  if (!fs.existsSync(hostingJsonDir)) {
+    fs.mkdirSync(hostingJsonDir, { recursive: true });
   }
+  if (!fs.existsSync(hostingJsonPath)) {
+    fs.writeFileSync(
+      hostingJsonPath,
+      JSON.stringify({ project_id: 'appgprj_6a8fb2b7023481919c1e559a3d6c52ec', d1: null, r2: null }),
+      'utf-8'
+    );
+  }
+  hostingConfig = JSON.parse(fs.readFileSync(hostingJsonPath, 'utf-8'));
+} catch (e) {
+  // Fallback on read/parse error
 }
 
 const { d1, r2 } = hostingConfig;
+
 
 
 // macOS Seatbelt blocks FSEvents, so Codex previews need polling for HMR.
