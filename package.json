@@ -9,7 +9,7 @@
     "dev": "vinext dev",
     "build": "next build && node -e \"require('fs').cpSync('.next', 'dist', {recursive: true})\"",
     "start": "next start",
-    "lint": "eslint . --ignore-pattern dist --ignore-pattern .next --ignore-pattern notebook-journey"
+    "lint": "eslint . --ignore-pattern dist --ignore-pattern .next"
   },
   "dependencies": {
     "next": "16.2.6",

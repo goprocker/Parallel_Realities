@@ -1,12 +1,12 @@
-import { defineConfig, globalIgnores } from 'eslint/config';
 import nextVitals from 'eslint-config-next/core-web-vitals';
 import nextTs from 'eslint-config-next/typescript';
 
-const eslintConfig = defineConfig([
+const eslintConfig = [
   ...nextVitals,
   ...nextTs,
-  globalIgnores(['.next/**', 'out/**', 'build/**', 'dist/**', '**/dist/**', 'notebook-journey/**', 'next-env.d.ts']),
-]);
-
+  {
+    ignores: ['.next/**', 'out/**', 'build/**', 'dist/**', '**/dist/**', '.ag-kit-backups/**', 'next-env.d.ts'],
+  },
+];
 
 export default eslintConfig;
