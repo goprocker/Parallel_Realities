@@ -241,6 +241,8 @@ export default function Home() {
   const openBook = () => {
     if (isOpening) return;
     setIsOpening(true);
+    // Automatically start gentle reading soundscape on opening book
+    startAmbientMusic();
     setTimeout(() => {
       setIsBookOpen(true);
       setIsOpening(false);
@@ -273,6 +275,21 @@ export default function Home() {
     }
   };
 
+  // Auto-start ambient music on first user gesture
+  useEffect(() => {
+    const handleFirstInteraction = () => {
+      startAmbientMusic();
+    };
+
+    window.addEventListener('click', handleFirstInteraction, { once: true });
+    window.addEventListener('keydown', handleFirstInteraction, { once: true });
+
+    return () => {
+      window.removeEventListener('click', handleFirstInteraction);
+      window.removeEventListener('keydown', handleFirstInteraction);
+    };
+  }, []);
+
   const currIndexRef = useRef(index);
   useEffect(() => {
     currIndexRef.current = index;
@@ -287,6 +304,7 @@ export default function Home() {
     if (target === currIndexRef.current) return;
     setDirection(target > currIndexRef.current ? 'forward' : 'back');
     setIndex(target);
+    ambientSound.triggerPageTurnSound();
   };
 
   // Scroll & Touch driven page turn logic with debouncing

@@ -108,11 +108,19 @@ vec4 render( in vec3 ro, in vec3 rd, in vec2 px ) {
 
 void main() {
   vec2 p = (2.0 * gl_FragCoord.xy - iResolution.xy) / iResolution.y;
+  
+  // Continuous automatic gentle atmospheric drift & camera orbit
+  float autoTime = iTime * 0.09;
+  float autoPanX = 0.5 + 0.38 * sin(autoTime * 0.6);
+  float autoPanY = 0.52 + 0.18 * cos(autoTime * 0.45);
+  
   vec2 m = iMouse.xy / iResolution.xy;
+  // If mouse is near center / default, auto flow dominates
+  vec2 targetM = mix(vec2(autoPanX, autoPanY), m, 0.22);
 
-  vec3 ro = 4.0 * normalize(vec3(sin(3.0 * m.x), 0.8 * m.y, cos(3.0 * m.x))) - vec3(0.0, 0.1, 0.0);
+  vec3 ro = 4.0 * normalize(vec3(sin(2.2 * targetM.x + autoTime * 0.35), 0.75 * targetM.y + 0.15, cos(2.2 * targetM.x + autoTime * 0.35))) - vec3(0.0, 0.1, 0.0);
   vec3 ta = vec3(0.0, -1.0, 0.0);
-  mat3 ca = setCamera(ro, ta, 0.07 * cos(0.25 * iTime));
+  mat3 ca = setCamera(ro, ta, 0.08 * cos(0.2 * iTime));
   vec3 rd = ca * normalize(vec3(p.xy, 1.5));
 
   gl_FragColor = render(ro, rd, gl_FragCoord.xy);
