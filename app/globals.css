@@ -449,11 +449,12 @@ button {
 }
 
 .kicker {
-  margin: 12px 0 6px;
-  font-size: 10px;
+  margin: 10px 0 6px;
+  font-family: var(--font-sans);
+  font-size: 9.5px;
   font-weight: 800;
-  letter-spacing: 0.16em;
-  color: var(--accent-blue);
+  letter-spacing: 0.18em;
+  color: #801b1b;
   text-transform: uppercase;
 }
 
@@ -1602,13 +1603,32 @@ h1 {
 }
 
 /* Spread 03 & 06: Upper Curve & Lower Curve Navigation Maps */
-.curve-flow-hints {
-  animation: editorialFadeIn 0.6s ease 0.2s both;
+.curve-lead-essay {
+  animation: editorialFadeInUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.2s both;
 }
 
-.upper-curve-guide .page-actions-group,
-.lower-curve-guide .page-actions-group {
+.curve-pull-quote-wrapper {
   animation: editorialFadeInUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.35s both;
+}
+
+.curve-waypoints-container {
+  animation: editorialFadeInUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.5s both;
+}
+
+.waypoint-card:nth-child(1) {
+  animation: editorialFadeInUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.65s both;
+}
+
+.waypoint-card:nth-child(2) {
+  animation: editorialFadeInUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.78s both;
+}
+
+.curve-nav-strip {
+  animation: editorialFadeIn 0.5s ease 0.9s both;
+}
+
+.curve-editorial-actions {
+  animation: editorialFadeInUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) 1.05s both;
 }
 
 .curve-wrap {
@@ -2069,6 +2089,204 @@ h1 {
 
 .editorial-explore-cta:hover .cta-arrow {
   transform: translateX(4px);
+}
+
+/* ==========================================================================
+   Curve Guides (Spread 03 & 06) Publication-Grade Editorial Layout
+   ========================================================================== */
+.curve-editorial-layout {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding-top: 2px;
+}
+
+.curve-lead-essay {
+  font-family: var(--font-body);
+  font-size: 12.5px;
+  line-height: 1.48;
+  color: #3b332b;
+  margin: 0 0 10px;
+}
+
+.curve-pull-quote-wrapper {
+  position: relative;
+  margin: 4px 0 12px;
+  padding: 6px 12px 6px 14px;
+  border-left: 2.5px solid #801b1b;
+  background: rgba(237, 230, 216, 0.5);
+  border-radius: 0 4px 4px 0;
+}
+
+.curve-pull-quote {
+  margin: 0;
+  padding: 0;
+}
+
+.curve-pull-quote .quote-text {
+  font-family: var(--font-body);
+  font-style: italic;
+  font-size: 12px;
+  line-height: 1.45;
+  color: #241f19;
+  font-weight: 500;
+  margin: 0;
+}
+
+/* Waypoints Case Studies Index */
+.curve-waypoints-container {
+  background: #f7f3ea;
+  border: 1px solid #ded6c4;
+  border-radius: 6px;
+  padding: 10px 12px;
+  margin-bottom: 10px;
+}
+
+.waypoints-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+  border-bottom: 1px dashed rgba(26, 24, 22, 0.12);
+  padding-bottom: 6px;
+}
+
+.waypoints-title {
+  font-family: var(--font-sans);
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  color: #786e60;
+  text-transform: uppercase;
+}
+
+.waypoints-tag {
+  font-family: var(--font-sans);
+  font-size: 8.5px;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  color: #801b1b;
+  background: rgba(128, 27, 27, 0.08);
+  padding: 2px 6px;
+  border-radius: 3px;
+}
+
+.waypoint-cards-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+
+.waypoint-card {
+  background: #fbf9f4;
+  border: 1px solid #dfd7c5;
+  border-radius: 4px;
+  padding: 8px 10px;
+  cursor: pointer;
+  transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+  display: flex;
+  flex-direction: column;
+}
+
+.waypoint-card:hover {
+  transform: translateY(-2px);
+  border-color: #801b1b;
+  box-shadow: 0 4px 12px rgba(128, 27, 27, 0.14);
+  background: #ffffff;
+}
+
+.wp-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 3px;
+}
+
+.wp-badge {
+  font-family: var(--font-sans);
+  font-size: 8.5px;
+  font-weight: 800;
+  color: #801b1b;
+  letter-spacing: 0.1em;
+}
+
+.wp-arrow {
+  font-size: 11px;
+  color: var(--book-gold);
+  transition: transform 0.2s ease;
+}
+
+.waypoint-card:hover .wp-arrow {
+  transform: translateX(3px);
+}
+
+.wp-name {
+  font-family: var(--font-serif);
+  font-size: 12px;
+  font-weight: 700;
+  color: #1c1815;
+  margin: 0 0 2px;
+  line-height: 1.25;
+}
+
+.wp-desc {
+  font-family: var(--font-body);
+  font-size: 10px;
+  line-height: 1.35;
+  color: #615749;
+  margin: 0;
+}
+
+/* Nav Strip Sequence */
+.curve-nav-strip {
+  padding: 6px 0;
+  border-top: 1px dashed rgba(26, 24, 22, 0.15);
+  border-bottom: 1px dashed rgba(26, 24, 22, 0.15);
+  margin-bottom: 10px;
+}
+
+.strip-nodes {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 4px;
+}
+
+.strip-node {
+  font-family: var(--font-sans);
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: #6b6154;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.strip-node:hover {
+  color: #801b1b;
+}
+
+.strip-node.active {
+  color: #801b1b;
+  font-weight: 800;
+}
+
+.strip-node.next-curve {
+  color: #801b1b;
+  font-weight: 800;
+}
+
+.strip-arrow {
+  color: var(--book-gold);
+  font-size: 10px;
+}
+
+.curve-editorial-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: auto;
+  padding-top: 2px;
 }
 
 /* ==========================================================================

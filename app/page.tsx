@@ -41,9 +41,9 @@ const pages: readonly PageData[] = [
   },
   {
     id: 3,
-    kicker: '03 · UPPER CURVE',
+    kicker: '03 / UPPER TRAJECTORY',
     title: 'Follow The Rise.',
-    subtitle: 'The Upper Curve (The Rise): How the rich goes up. Click the bottom box to go back, middle boxes for articles, or the top box to proceed to the next stage.',
+    subtitle: '',
     kind: 'upper',
   },
   {
@@ -93,9 +93,9 @@ const pages: readonly PageData[] = [
   },
   {
     id: 6,
-    kicker: '06 · LOWER CURVE',
+    kicker: '06 / LOWER TRAJECTORY',
     title: 'Follow The Descent.',
-    subtitle: 'The Lower Curve (The Descent): How the poor goes down. Click the top box to go back to the upper curve, middle boxes for articles, or the bottom box to see the print edition.',
+    subtitle: '',
     kind: 'lower',
   },
   {
@@ -583,21 +583,66 @@ export default function Home() {
       )}
 
       {kind === 'upper' && (
-        <div className="upper-curve-guide">
-          <div className="curve-flow-hints">
-            <span className="flow-step">01 · Before Page</span>
-            <span className="flow-arrow">→</span>
-            <span className="flow-step">02 · Freedom To Choose</span>
-            <span className="flow-arrow">→</span>
-            <span className="flow-step">03 · Can Afford To Fail</span>
-            <span className="flow-arrow">→</span>
-            <span className="flow-step highlight">04 · Lower Curve</span>
+        <div className="curve-editorial-layout">
+          <p className="curve-lead-essay">
+            When capital creates a cushion, risk ceases to be an existential threat. It transforms into an asset — a vehicle for experimentation, compounding advantage, and career self-determination.
+          </p>
+
+          <div className="curve-pull-quote-wrapper">
+            <span className="quote-mark-watermark" aria-hidden="true">“</span>
+            <blockquote className="curve-pull-quote">
+              <p className="quote-text">
+                “Wealth doesn&apos;t only buy things. It buys time, safety, and the privilege of trying again.”
+              </p>
+            </blockquote>
           </div>
 
-          <div className="page-actions-group" style={{ marginTop: '18px' }}>
+          <div className="curve-waypoints-container">
+            <div className="waypoints-header">
+              <span className="waypoints-title">UPPER CURVE CASE STUDIES</span>
+              <span className="waypoints-tag">TRAJECTORY: ASCENT</span>
+            </div>
+
+            <div className="waypoint-cards-grid">
+              <div className="waypoint-card" onClick={() => go(3)}>
+                <div className="wp-top">
+                  <span className="wp-badge">CASE 01</span>
+                  <span className="wp-arrow">→</span>
+                </div>
+                <h4 className="wp-name">Freedom to Choose</h4>
+                <p className="wp-desc">When a career doesn&apos;t have to begin with immediate survival.</p>
+              </div>
+
+              <div className="waypoint-card" onClick={() => go(4)}>
+                <div className="wp-top">
+                  <span className="wp-badge">CASE 02</span>
+                  <span className="wp-arrow">→</span>
+                </div>
+                <h4 className="wp-name">Can Afford to Fail</h4>
+                <p className="wp-desc">How safety nets turn potential disaster into a temporary setback.</p>
+              </div>
+            </div>
+          </div>
+
+          <div className="curve-nav-strip">
+            <div className="strip-nodes">
+              <span className="strip-node active">01 · ORIGIN</span>
+              <span className="strip-arrow">→</span>
+              <span className="strip-node" onClick={() => go(3)}>02 · FREEDOM</span>
+              <span className="strip-arrow">→</span>
+              <span className="strip-node" onClick={() => go(4)}>03 · RISK</span>
+              <span className="strip-arrow">→</span>
+              <span className="strip-node next-curve" onClick={() => go(5)}>04 · LOWER CURVE</span>
+            </div>
+          </div>
+
+          <div className="curve-editorial-actions">
             <button className="primary action-btn" onClick={() => go(3)}>
-              <span>Explore Case 01: Freedom To Choose</span>
+              <span>Begin Case 01: Freedom To Choose</span>
               <span className="btn-icon">→</span>
+            </button>
+            <button className="outline action-btn" onClick={() => go(5)}>
+              <span>Skip to Lower Curve ↓</span>
             </button>
           </div>
         </div>
@@ -655,26 +700,66 @@ export default function Home() {
       )}
 
       {kind === 'lower' && (
-        <div className="lower-curve-guide">
-          <div className="curve-flow-hints">
-            <span className="flow-step">01 · Upper Curve</span>
-            <span className="flow-arrow">→</span>
-            <span className="flow-step">02 · Church Street</span>
-            <span className="flow-arrow">→</span>
-            <span className="flow-step">03 · The Poverty Loop</span>
-            <span className="flow-arrow">→</span>
-            <span className="flow-step highlight">04 · Print Broadsheet</span>
+        <div className="curve-editorial-layout">
+          <p className="curve-lead-essay">
+            At the lower branch of the divide, margin for error is near zero. A delayed wage or a minor disruption cascades into debt, transforming daily effort into a struggle for basic continuity.
+          </p>
+
+          <div className="curve-pull-quote-wrapper">
+            <span className="quote-mark-watermark" aria-hidden="true">“</span>
+            <blockquote className="curve-pull-quote">
+              <p className="quote-text">
+                “Sometimes poverty is not about having no ladder to climb. It is about having no safety net while you try to climb.”
+              </p>
+            </blockquote>
           </div>
 
-          <div className="curve-page-actions">
-            <button className="outline btn-sm" onClick={() => go(2)}>
-              ← Upper Curve
+          <div className="curve-waypoints-container">
+            <div className="waypoints-header">
+              <span className="waypoints-title">LOWER CURVE CASE STUDIES</span>
+              <span className="waypoints-tag">TRAJECTORY: DESCENT</span>
+            </div>
+
+            <div className="waypoint-cards-grid">
+              <div className="waypoint-card" onClick={() => go(6)}>
+                <div className="wp-top">
+                  <span className="wp-badge">CASE 03</span>
+                  <span className="wp-arrow">→</span>
+                </div>
+                <h4 className="wp-name">Child Labour on Church St</h4>
+                <p className="wp-desc">Entrepreneurship vs poverty: how the seller defines the perception.</p>
+              </div>
+
+              <div className="waypoint-card" onClick={() => go(7)}>
+                <div className="wp-top">
+                  <span className="wp-badge">CASE 04</span>
+                  <span className="wp-arrow">→</span>
+                </div>
+                <h4 className="wp-name">The Poverty Loop</h4>
+                <p className="wp-desc">The gap between policy availability and daily survival on the ground.</p>
+              </div>
+            </div>
+          </div>
+
+          <div className="curve-nav-strip">
+            <div className="strip-nodes">
+              <span className="strip-node" onClick={() => go(2)}>01 · UPPER</span>
+              <span className="strip-arrow">→</span>
+              <span className="strip-node" onClick={() => go(6)}>02 · CHURCH ST</span>
+              <span className="strip-arrow">→</span>
+              <span className="strip-node" onClick={() => go(7)}>03 · THE LOOP</span>
+              <span className="strip-arrow">→</span>
+              <span className="strip-node next-curve" onClick={() => go(8)}>04 · BROADSHEET</span>
+            </div>
+          </div>
+
+          <div className="curve-editorial-actions">
+            <button className="primary action-btn" onClick={() => go(6)}>
+              <span>Begin Case 03: Church Street</span>
+              <span className="btn-icon">→</span>
             </button>
-            <button className="primary btn-sm" onClick={() => go(6)}>
-              Explore Case 03 →
-            </button>
-            <button className="outline btn-sm" onClick={() => go(8)}>
-              Print Edition →
+            <button className="outline action-btn" onClick={() => go(8)}>
+              <span>Print Broadsheet →</span>
             </button>
           </div>
         </div>
