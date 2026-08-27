@@ -1387,107 +1387,28 @@ h1 {
 .closed-front-face {
   flex: 1;
   height: 100%;
-  background: linear-gradient(145deg, #1e1814 0%, #130f0c 100%);
   border-radius: 0 6px 6px 0;
-  padding: 16px;
-  border: 1.5px solid #2d231b;
   position: relative;
   overflow: hidden;
   display: flex;
   flex-direction: column;
-  box-shadow: inset 0 0 40px rgba(0, 0, 0, 0.5);
+  border: 1.5px solid #2d231b;
 }
 
-.gold-frame-border {
-  height: 100%;
-  border: 2px solid var(--book-gold);
-  border-radius: 4px;
-  padding: 22px 18px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-between;
-  text-align: center;
-  position: relative;
-  box-shadow: inset 0 0 20px rgba(201, 168, 106, 0.15);
-}
-
-.corner-ornament {
+.cover-photo-wrapper {
   position: absolute;
-  width: 10px;
-  height: 10px;
-  border: 2px solid var(--book-gold);
+  inset: 0;
+  z-index: 0;
 }
 
-.corner-ornament.top-left { top: 4px; left: 4px; border-right: none; border-bottom: none; }
-.corner-ornament.top-right { top: 4px; right: 4px; border-left: none; border-bottom: none; }
-.corner-ornament.bottom-left { bottom: 4px; left: 4px; border-right: none; border-top: none; }
-.corner-ornament.bottom-right { bottom: 4px; right: 4px; border-left: none; border-top: none; }
-
-.cover-header-tag {
-  font-size: 9.5px;
-  font-weight: 800;
-  letter-spacing: 0.22em;
-  color: var(--book-gold);
-  text-transform: uppercase;
-}
-
-.cover-title-group {
-  margin: 8px 0;
-}
-
-.cover-main-title {
-  font-family: var(--font-serif);
-  font-size: clamp(22px, 3.2vw, 32px);
-  font-weight: 900;
-  letter-spacing: 0.08em;
-  color: var(--book-gold);
-  text-shadow: 0 3px 10px rgba(0, 0, 0, 0.9), 0 0 20px rgba(201, 168, 106, 0.4);
-  margin: 0 0 6px 0;
-  line-height: 1.15;
-}
-
-.cover-subtitle {
-  font-size: 11.5px;
-  line-height: 1.45;
-  color: #bcaaa4;
-  max-width: 270px;
-  margin: 0 auto;
-  font-style: italic;
-}
-
-.cover-emblem {
-  width: 72px;
-  height: 72px;
-  color: var(--book-gold);
-  filter: drop-shadow(0 0 12px rgba(201, 168, 106, 0.5));
-  margin: 8px 0;
-  transition: transform 0.4s ease;
-}
-
-.closed-cover-container:hover .cover-emblem {
-  transform: scale(1.1) rotate(5deg);
-}
-
-.cover-byline-group {
-  margin: 6px 0;
-}
-
-.cover-byline {
-  font-size: 11px;
-  font-weight: 800;
-  letter-spacing: 0.18em;
-  color: var(--book-gold);
+.cover-photo-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
   display: block;
-}
-
-.cover-issue {
-  font-size: 9px;
-  font-weight: 700;
-  letter-spacing: 0.14em;
-  color: #9e8479;
-  display: block;
-  margin-top: 3px;
+  user-select: none;
+  -webkit-user-drag: none;
 }
 
 .closed-hardcover-book {
@@ -1522,55 +1443,8 @@ h1 {
     -14px 0 45px rgba(201, 168, 106, 0.2);
 }
 
-.cover-main-title {
-  font-family: var(--font-serif);
-  font-size: clamp(22px, 3.2vw, 32px);
-  font-weight: 900;
-  letter-spacing: 0.08em;
-  background: linear-gradient(120deg, #d4af37 0%, #fff4cc 40%, #c9a86a 70%, #aa820a 100%);
-  background-size: 200% auto;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  animation: goldShimmerSweep 6s ease-in-out infinite;
-  margin: 0 0 6px 0;
-  line-height: 1.15;
-  filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.9));
-}
-
-@keyframes goldShimmerSweep {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
-}
-
-.cover-open-btn {
-  background: linear-gradient(135deg, #d4af37 0%, #aa820a 100%);
-  color: #120e0a;
-  border: 1.5px solid #fff3c4;
-  padding: 10px 22px;
-  border-radius: 24px;
-  font-size: 11px;
-  font-weight: 900;
-  letter-spacing: 0.16em;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  box-shadow: 0 4px 18px rgba(212, 175, 55, 0.5), 0 2px 5px rgba(0, 0, 0, 0.6);
+.closed-cover-container {
   cursor: pointer;
-  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
-  animation: btnBreathePulse 2.8s ease-in-out infinite;
-}
-
-@keyframes btnBreathePulse {
-  0% { transform: scale(1); box-shadow: 0 4px 18px rgba(212, 175, 55, 0.45); }
-  50% { transform: scale(1.04); box-shadow: 0 8px 28px rgba(212, 175, 55, 0.75); }
-  100% { transform: scale(1); box-shadow: 0 4px 18px rgba(212, 175, 55, 0.45); }
-}
-
-.cover-open-btn:hover {
-  animation-play-state: paused;
-  transform: scale(1.08);
-  box-shadow: 0 6px 26px rgba(212, 175, 55, 0.9);
 }
 
 /* Ambient Floating Dust / Light Embers */
@@ -1612,21 +1486,158 @@ h1 {
   }
 }
 
-/* Page Content Stagger Entrance Animation */
-.plain-page .copy > *,
-.plain-page .visual > * {
-  animation: bookContentFadeSlide 0.4s cubic-bezier(0.16, 1, 0.3, 1) both;
+/* ==========================================================================
+   Universal Editorial Page Content Stagger Entrance Animations
+   (Extended from Page 01 across all 10 spreads in the book)
+   ========================================================================== */
+
+/* Universal Header Elements (Number, Kicker, Title, Description) */
+.copy-inner > .number {
+  animation: editorialFadeIn 0.5s ease 0.05s both;
 }
 
-@keyframes bookContentFadeSlide {
-  0% {
-    opacity: 0;
-    transform: translateY(6px);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0);
-  }
+.copy-inner > .kicker {
+  animation: editorialFadeIn 0.5s ease 0.1s both;
+}
+
+.copy-inner > .editorial-page-headline,
+.copy-inner > h1 {
+  animation: editorialFadeInUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.15s both;
+}
+
+.copy-inner > .description {
+  animation: editorialFadeInUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.25s both;
+}
+
+/* Article Reader Typography (Case Studies 01-04) */
+.article-meta-badge {
+  animation: editorialFadeIn 0.5s ease 0.15s both;
+}
+
+.article-paragraphs .article-lead-p,
+.article-paragraphs .article-p:nth-child(1) {
+  animation: editorialFadeInUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.2s both;
+}
+
+.article-paragraphs .article-p:nth-child(2) {
+  animation: editorialFadeInUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.32s both;
+}
+
+.article-paragraphs .article-p:nth-child(3) {
+  animation: editorialFadeInUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.44s both;
+}
+
+.article-paragraphs .article-p:nth-child(4) {
+  animation: editorialFadeInUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.56s both;
+}
+
+.article-paragraphs .article-p:nth-child(5) {
+  animation: editorialFadeInUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.68s both;
+}
+
+.article-paragraphs .article-p:nth-child(6) {
+  animation: editorialFadeInUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.8s both;
+}
+
+.article-pull-quote {
+  animation: editorialFadeInUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.38s both;
+}
+
+.article-conclusion-p {
+  animation: editorialFadeInUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.5s both;
+}
+
+.article-actions {
+  animation: editorialFadeInUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.65s both;
+}
+
+/* Article Visual Cards & Images */
+.article-visual-card {
+  animation: editorialFadeInUp 0.65s cubic-bezier(0.16, 1, 0.3, 1) 0.2s both;
+}
+
+.sketch-header {
+  animation: editorialFadeIn 0.5s ease 0.3s both;
+}
+
+.article-image-container {
+  animation: editorialFadeIn 0.6s ease 0.35s both;
+}
+
+.sketch-caption {
+  animation: editorialFadeIn 0.5s ease 0.45s both;
+}
+
+/* Spread 02: Introduction & Stats */
+.intro-pull-quote-wrapper {
+  animation: editorialFadeInUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.2s both;
+}
+
+.intro-turning-point {
+  animation: editorialFadeInUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.35s both;
+}
+
+.bengaluru-stats-section {
+  animation: editorialFadeInUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.5s both;
+}
+
+.stats-side-by-side .stat-column:nth-child(1) {
+  animation: editorialFadeInUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.65s both;
+}
+
+.stats-side-by-side .stat-column:nth-child(3) {
+  animation: editorialFadeInUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.78s both;
+}
+
+.stats-summary-statement {
+  animation: editorialFadeIn 0.5s ease 0.9s both;
+}
+
+.intro-bottom-cta {
+  animation: editorialFadeInUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) 1.05s both;
+}
+
+.intro-k-diagram-container {
+  animation: editorialFadeInUp 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.25s both;
+}
+
+/* Spread 03 & 06: Upper Curve & Lower Curve Navigation Maps */
+.curve-flow-hints {
+  animation: editorialFadeIn 0.6s ease 0.2s both;
+}
+
+.upper-curve-guide .page-actions-group,
+.lower-curve-guide .page-actions-group {
+  animation: editorialFadeInUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.35s both;
+}
+
+.curve-wrap {
+  animation: editorialFadeInUp 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.25s both;
+}
+
+.curve-instruction {
+  animation: editorialFadeIn 0.5s ease 0.5s both;
+}
+
+/* Spreads 09 & 10: Broadsheet & Epilogue */
+.broadsheet-book-frame {
+  animation: editorialFadeInUp 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.2s both;
+}
+
+.broadsheet-book-page-caption {
+  animation: editorialFadeIn 0.5s ease 0.35s both;
+}
+
+.epilogue-reflection-block .reflection-quote {
+  animation: editorialFadeInUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.2s both;
+}
+
+.epilogue-reflection-block .reflection-meta-grid {
+  animation: editorialFadeInUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.38s both;
+}
+
+.epilogue-reflection-block .epilogue-restart-btn {
+  animation: editorialFadeInUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.55s both;
 }
 
 .close-book-header-btn {

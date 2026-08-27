@@ -738,45 +738,15 @@ export default function Home() {
 
               {/* Front Cover Face */}
               <div className="closed-front-face">
-                {/* Gold Debossed Frame */}
-                <div className="gold-frame-border">
-                  <div className="corner-ornament top-left" />
-                  <div className="corner-ornament top-right" />
-                  <div className="corner-ornament bottom-left" />
-                  <div className="corner-ornament bottom-right" />
-
-                  <div className="cover-header-tag">
-                    <span>SMI INVESTIGATIVE FIELD NOTEBOOK · 2026</span>
-                  </div>
-
-                  <div className="cover-title-group">
-                    <h1 className="cover-main-title">THE K-SHAPED DIVIDE</h1>
-                    <p className="cover-subtitle">A Visual Investigation on Wealth, Survival, and Choices in Bengaluru</p>
-                  </div>
-
-                  {/* Center Gold Foil Emblem */}
-                  <div className="cover-emblem">
-                    <svg viewBox="0 0 100 100" className="emblem-svg">
-                      <circle cx="50" cy="50" r="45" fill="none" stroke="currentColor" strokeWidth="1.5" strokeDasharray="3 3" />
-                      <circle cx="50" cy="50" r="38" fill="none" stroke="currentColor" strokeWidth="1" />
-                      {/* Stylized K */}
-                      <line x1="38" y1="26" x2="38" y2="74" stroke="currentColor" strokeWidth="4" strokeLinecap="round" />
-                      <path d="M 38 50 L 64 28" fill="none" stroke="currentColor" strokeWidth="4" strokeLinecap="round" />
-                      <path d="M 38 50 L 64 72" fill="none" stroke="currentColor" strokeWidth="4" strokeLinecap="round" />
-                    </svg>
-                  </div>
-
-                  <div className="cover-byline-group">
-                    <span className="cover-byline">BY PRANITH VINCENT</span>
-                    <span className="cover-issue">ISSUE NO. 777 · PRINT & DIGITAL NOTEBOOK</span>
-                  </div>
-
-                  {/* Interactive Open Seal Button */}
-                  <button className="cover-open-btn" onClick={(e) => { e.stopPropagation(); openBook(); }} aria-label="Open Notebook">
-                    <span className="open-btn-icon">📖</span>
-                    <span className="open-btn-text">CLICK TO OPEN NOTEBOOK</span>
-                    <span className="open-btn-arrow">→</span>
-                  </button>
+                {/* Full-bleed Cover Image */}
+                <div className="cover-photo-wrapper">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src="/pics/cover.jpg"
+                    alt="The K-Curve — Two Curves. Two Realities. One Society. Cover by Pranith Vincent."
+                    className="cover-photo-img"
+                    draggable={false}
+                  />
                 </div>
               </div>
 
