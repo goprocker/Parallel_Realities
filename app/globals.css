@@ -2415,92 +2415,180 @@ h1 {
 /* ==========================================================================
    Intro K-Diagram Explanatory Graphics (Right Page)
    ========================================================================== */
-.intro-k-diagram-wrapper {
+.intro-k-diagram-container {
   position: relative;
   width: 100%;
   height: 100%;
   display: flex;
+  flex-direction: column;
+  padding: 4px 6px 8px;
+}
+
+.diagram-top-bar {
+  display: flex;
+  justify-content: space-between;
   align-items: center;
-  justify-content: center;
+  margin-bottom: 4px;
+  padding-bottom: 4px;
+  border-bottom: 1px dashed rgba(26, 24, 22, 0.12);
+}
+
+.diagram-kicker {
+  font-family: var(--font-sans);
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: 0.15em;
+  color: #801b1b;
+  text-transform: uppercase;
+}
+
+.diagram-hint {
+  font-family: var(--font-sans);
+  font-size: 8px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: #786e60;
+  text-transform: uppercase;
 }
 
 .intro-k-svg {
   width: 100%;
-  height: 100%;
-  max-height: 570px;
+  flex: 1;
+  min-height: 0;
   display: block;
 }
 
-.branch-hit-area {
-  fill: transparent;
-  cursor: pointer;
+.diagram-branch {
+  transition: opacity 0.28s ease, transform 0.28s ease;
 }
 
-.branch-group {
-  cursor: pointer;
-  transition: opacity 0.28s ease;
+.diagram-branch.is-dimmed {
+  opacity: 0.22;
 }
 
-.branch-group.is-dimmed {
-  opacity: 0.28;
+.diagram-branch.is-active {
+  opacity: 1;
 }
 
-.k-trajectory-line {
-  transition: stroke 0.22s ease, stroke-width 0.22s ease;
+.diagram-milestone-group {
+  transition: transform 0.2s ease;
 }
 
-.annotation-milestone {
+.milestone-card-box {
   pointer-events: none;
 }
 
-.milestone-dot {
-  transition: fill 0.22s ease, r 0.22s ease;
+.milestone-card-box .card-badge {
+  font-family: var(--font-sans);
+  font-size: 7.5px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
 }
 
-.milestone-text {
+.milestone-card-box .card-title {
+  font-family: var(--font-serif);
+  font-size: 9.5px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+.endpoint-callout .end-badge {
+  font-family: var(--font-sans);
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.endpoint-callout .end-sub {
+  font-family: var(--font-body);
+  font-style: italic;
+  font-size: 9.5px;
+}
+
+.origin-badge {
+  font-family: var(--font-sans);
+  font-size: 7.5px;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.origin-title {
+  font-family: var(--font-serif);
+  font-size: 9.5px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+/* Bottom Exploration Prompts */
+.diagram-footer-strip {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  margin-top: 4px;
+  padding-top: 6px;
+  border-top: 1px dashed rgba(26, 24, 22, 0.12);
+}
+
+.footer-branch-btn {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #f7f3ea;
+  border: 1px solid #ded5c2;
+  border-radius: 4px;
+  padding: 6px 10px;
+  cursor: pointer;
+  transition: all 0.22s ease;
+}
+
+.footer-branch-btn:hover {
+  background: #1c1815;
+  border-color: #1c1815;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+.footer-branch-btn .btn-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  margin-right: 6px;
+}
+
+.footer-branch-btn .btn-dot.upper {
+  background: #801b1b;
+}
+
+.footer-branch-btn .btn-dot.lower {
+  background: #544c41;
+}
+
+.footer-branch-btn .btn-txt {
   font-family: var(--font-sans);
   font-size: 10px;
   font-weight: 700;
-  letter-spacing: 0.03em;
-  transition: fill 0.22s ease;
+  color: #2b251e;
+  flex: 1;
+  text-align: left;
+  transition: color 0.2s ease;
 }
 
-.branch-endpoint-callout .endpoint-title {
-  font-family: var(--font-sans);
+.footer-branch-btn:hover .btn-txt {
+  color: #ffffff;
+}
+
+.footer-branch-btn .btn-arr {
+  color: var(--book-gold);
   font-size: 11px;
   font-weight: 800;
-  letter-spacing: 0.12em;
-  fill: #801b1b;
+  transition: transform 0.2s ease;
 }
 
-.branch-endpoint-callout .endpoint-desc {
-  font-family: var(--font-body);
-  font-style: italic;
-  font-size: 10.5px;
-  fill: #5a5247;
-}
-
-.explore-indicator-badge .badge-text {
-  font-family: var(--font-sans);
-  font-size: 9.5px;
-  font-weight: 700;
-  letter-spacing: 0.04em;
-}
-
-/* Intersection Origin & Society Text */
-.society-heading {
-  font-family: var(--font-sans);
-  font-size: 9.5px;
-  font-weight: 800;
-  letter-spacing: 0.14em;
-  fill: #1c1815;
-}
-
-.society-sub {
-  font-family: var(--font-body);
-  font-style: italic;
-  font-size: 11px;
-  fill: #665e52;
+.footer-branch-btn:hover .btn-arr {
+  transform: translateX(2px);
 }
 
 /* ==========================================================================
