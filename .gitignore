@@ -17,7 +17,9 @@ tsconfig.tsbuildinfo
 # backups & temp caches
 /.ag-kit-backups/
 /.openai/
+!.openai/hosting.json
 /.gemini/
+
 
 # misc
 .DS_Store
