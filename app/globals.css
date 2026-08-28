@@ -1414,7 +1414,7 @@ h1 {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  background: radial-gradient(circle at 50% 45%, #241d17 0%, #120e0a 70%, #080605 100%);
+  background: transparent;
   position: relative;
   overflow: hidden;
   box-sizing: border-box;
@@ -1805,12 +1805,11 @@ h1 {
   position: absolute;
   inset: 0;
   background: radial-gradient(
-    circle at 50% 40%,
-    rgba(25, 20, 16, 0.05) 0%,
-    rgba(18, 14, 11, 0.32) 65%,
+    circle at 50% 45%,
+    rgba(10, 8, 6, 0.0) 30%,
+    rgba(10, 8, 6, 0.25) 75%,
     rgba(10, 8, 6, 0.55) 100%
   );
-  mix-blend-mode: multiply;
   pointer-events: none;
 }
 
